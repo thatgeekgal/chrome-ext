@@ -38,23 +38,23 @@ Chrome extension examples are located in `01_extension_basics_browser` folder. T
 ### Architecture
 
 * `manifest.json`: overall configuration of a chrome extension (e.g. what is allowed to do and when is allowed to do)
-* multiple _content scripts_ (e.g. `content.js`) based on urls: Javascript code live and executed inside a web page we're on when the page is loaded to manipulate and alter the page behaviour (e.g. `content.js`)
-* 1 x _background script_ (e.g. `background.js`): Javascript code runs on the background when chrome is launched and listens to various events associated to activities like page actions and browser actions (e.g exension button click) and does various things to affect how the browsers as a whole behavior
-* _actions_: trigger events for background script to execute code
-1. _page action_
-2. _browser action_(content script is sandboxed and can't listen browser action)
-
+* multiple **content scripts** (e.g. `content.js`) based on urls: Javascript code live and executed inside a web page we're on when the page is loaded to manipulate and alter the page behaviour (e.g. `content.js`)
+* 1 x **background script** (e.g. `background.js`): Javascript code runs on the background when chrome is launched and listens to various events associated to activities like page actions and browser actions (e.g exension button click) and does various things to affect how the browsers as a whole behavior
+* _actions_: trigger events for background script to execute code (e.g._page action_ and _browser action_)
 
 ### Chrome API
-
-ways to communicate between _browser action --> background script <--> content scripts_  
-
+ 
 * `chrome.browserAction`
 * `chrome.tabs`
 * `chrome.runtime`
 
-1. Background script is running and listening to events (`chrome.browserAction.onClicked.addListener`)
+#### Communication Flow Example
+
+Browser action --> Background script <--> Content scripts 
+
+1. Background script is running on the background and listening for events (`chrome.browserAction.onClicked.addListener`)
 2. Chrome extension button is clicked
-3. Background script picks up the click event and send a message to all tabs or a particular opened tab (`chrome.tabs.sendMessage`)
-4. Content scripts listen for a message and receives it (`chrome.runtime.onMessage.addListener`)
-5. Content script can reply to background script (`chrome.runtime.sendMessage`)  and background script listens for a message and receives it (`chrome.runtime.onMessage.addListener`)
+3. Background script picks up the event and sends a message to a particular opened tab or all tabs (`chrome.tabs.sendMessage`)
+4. Content script are listening for a message and receive the message (`chrome.runtime.onMessage.addListener`)
+5. Content script replies to background script (`chrome.runtime.sendMessage`)
+6. Background script listens for a message and receives the message (`chrome.runtime.onMessage.addListener`) 
