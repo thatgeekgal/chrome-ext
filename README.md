@@ -37,6 +37,9 @@ Chrome extension examples are located in:
 * `01_extension_basics_browser`
 * `02_extension_kittens`
 * `03_extension_sketch` 
+* `04_extension_popup_maze` 
+* `05_extension_popup_messaging` 
+* `06_extension_tab_override` 
 
 To test the examples, load unpacked extension code at `chrome://extensions` (_Developer mode_ should be on). _Reload_ whenver any change in the code.
 
@@ -46,6 +49,7 @@ To test the examples, load unpacked extension code at `chrome://extensions` (_De
 * multiple **content scripts** (e.g. `content.js`) based on urls: Javascript code live and executed inside a web page we're on when the page is loaded to manipulate and alter the page behaviour (e.g. `content.js`)
 * 1 x **background script** (e.g. `background.js`): Javascript code runs on the background when chrome is launched and listens to various events associated to activities like page actions and browser actions (e.g exension button click) and does various things to affect how the browsers as a whole behavior
 * _actions_: trigger events for background script to execute code (e.g._page action_ and _browser action_)
+* _pup-up_: create an overlay that will augement browser experience
 
 ### Chrome API
  
@@ -53,7 +57,7 @@ To test the examples, load unpacked extension code at `chrome://extensions` (_De
 * `chrome.tabs`
 * `chrome.runtime`
 
-**Communication flow example**: browser action --> background script <--> content scripts
+**Communication flow example**: browser action --> background script (or popup) <--> content scripts
 1. Background script is running on the background and listening for events (`chrome.browserAction.onClicked.addListener`)
 2. Chrome extension button is clicked
 3. Background script picks up the event and sends a message to a particular opened tab or all tabs (`chrome.tabs.sendMessage`)
