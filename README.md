@@ -33,7 +33,12 @@ Bookmarklet examples are located in `00_bookmarklets` folder. `bookmarklet.js` n
 
 Same idea as Bookmarklets, but we can do more with Chrome extensions to affect the browser experience as a whole.
 
-Chrome extension examples are located in `01_extension_basics_browser` folder. To test the examples, load unpacked extension code at `chrome://extensions` (_Developer mode_ should be on). _Reload_ whenver any change in the code.
+Chrome extension examples are located in:
+* `01_extension_basics_browser`
+* `02_extension_kittens`
+* `03_extension_sketch` 
+
+To test the examples, load unpacked extension code at `chrome://extensions` (_Developer mode_ should be on). _Reload_ whenver any change in the code.
 
 ### Architecture
 
@@ -48,10 +53,7 @@ Chrome extension examples are located in `01_extension_basics_browser` folder. T
 * `chrome.tabs`
 * `chrome.runtime`
 
-#### Communication Flow Example
-
-Browser action --> Background script <--> Content scripts 
-
+**Communication flow example**: browser action --> background script <--> content scripts
 1. Background script is running on the background and listening for events (`chrome.browserAction.onClicked.addListener`)
 2. Chrome extension button is clicked
 3. Background script picks up the event and sends a message to a particular opened tab or all tabs (`chrome.tabs.sendMessage`)
