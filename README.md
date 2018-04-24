@@ -40,6 +40,7 @@ Chrome extension examples are located in:
 * `04_extension_popup_maze` 
 * `05_extension_popup_messaging` 
 * `06_extension_tab_override` 
+* `07_extension_word_definition` 
 
 To test the examples, load unpacked extension code at `chrome://extensions` (_Developer mode_ should be on). _Reload_ whenver any change in the code.
 
@@ -64,3 +65,9 @@ To test the examples, load unpacked extension code at `chrome://extensions` (_De
 4. Content script are listening for a message and receive the message (`chrome.runtime.onMessage.addListener`)
 5. Content script replies to background script (`chrome.runtime.sendMessage`)
 6. Background script listens for a message and receives the message (`chrome.runtime.onMessage.addListener`) 
+
+## Cross-Browser Extensions
+
+Same idea as Chrome Extensions. Refer to MDN web docs (https://developer.mozilla.org/en-US/Add-ons/WebExtensions)
+
+Cross-Browser extension example is located in `08_browser_kittens` folder.
